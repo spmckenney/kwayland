@@ -5,7 +5,8 @@ set( testWaylandConnectionThread_SRCS
         test_wayland_connection_thread.cpp
     )
 add_executable(testWaylandConnectionThread ${testWaylandConnectionThread_SRCS})
-target_link_libraries( testWaylandConnectionThread Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client Wayland::Server)
+target_include_directories(testWaylandConnectionThread PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testWaylandConnectionThread Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES} ${WAYLAND_SERVER_LIBRARIES})
 add_test(kwayland-testWaylandConnectionThread testWaylandConnectionThread)
 ecm_mark_as_test(testWaylandConnectionThread)
 
@@ -16,7 +17,8 @@ set( testWaylandRegistry_SRCS
         test_wayland_registry.cpp
     )
 add_executable(testWaylandRegistry ${testWaylandRegistry_SRCS})
-target_link_libraries( testWaylandRegistry Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client Wayland::Server)
+target_include_directories(testWaylandRegistry PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testWaylandRegistry Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES} ${WAYLAND_SERVER_LIBRARIES})
 add_test(kwayland-testWaylandRegistry testWaylandRegistry)
 ecm_mark_as_test(testWaylandRegistry)
 
@@ -28,7 +30,7 @@ if(Wayland_VERSION VERSION_GREATER "1.4.0")
             test_wayland_fullscreen_shell.cpp
         )
     add_executable(testWaylandFullscreenShell ${testWaylandFullscreenShell_SRCS})
-    target_link_libraries( testWaylandFullscreenShell Qt5::Test KF5::WaylandClient Wayland::Client)
+    target_link_libraries( testWaylandFullscreenShell Qt5::Test KF5::WaylandClient ${WAYLAND_CLIENT_LIBRARIES})
     add_test(kwayland-testWaylandFullscreenShell testWaylandFullscreenShell)
     ecm_mark_as_test(testWaylandFullscreenShell)
 endif()
@@ -40,7 +42,9 @@ set( testWaylandOutput_SRCS
         test_wayland_output.cpp
     )
 add_executable(testWaylandOutput ${testWaylandOutput_SRCS})
-target_link_libraries( testWaylandOutput Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client Wayland::Server)
+target_include_directories(testWaylandOutput PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+
+target_link_libraries( testWaylandOutput Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES} ${WAYLAND_SERVER_LIBRARIES})
 add_test(kwayland-testWaylandOutput testWaylandOutput)
 ecm_mark_as_test(testWaylandOutput)
 
@@ -51,7 +55,8 @@ set( testWaylandShell_SRCS
         test_wayland_shell.cpp
     )
 add_executable(testWaylandShell ${testWaylandShell_SRCS})
-target_link_libraries( testWaylandShell Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client Wayland::Server)
+target_include_directories(testWaylandShell PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testWaylandShell Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES} ${WAYLAND_SERVER_LIBRARIES})
 add_test(kwayland-testWaylandShell testWaylandShell)
 ecm_mark_as_test(testWaylandShell)
 
@@ -62,7 +67,8 @@ set( testWaylandSurface_SRCS
         test_wayland_surface.cpp
     )
 add_executable(testWaylandSurface ${testWaylandSurface_SRCS})
-target_link_libraries( testWaylandSurface Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client Wayland::Server)
+target_include_directories(testWaylandSurface PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testWaylandSurface Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES} ${WAYLAND_SERVER_LIBRARIES})
 add_test(kwayland-testWaylandSurface testWaylandSurface)
 ecm_mark_as_test(testWaylandSurface)
 
@@ -74,7 +80,9 @@ if (HAVE_LINUX_INPUT_H)
             test_wayland_seat.cpp
         )
     add_executable(testWaylandSeat ${testWaylandSeat_SRCS})
-    target_link_libraries( testWaylandSeat Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client Wayland::Server)
+    target_include_directories(testWaylandSeat PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+
+    target_link_libraries( testWaylandSeat Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES} ${WAYLAND_SERVER_LIBRARIES})
     add_test(kwayland-testWaylandSeat testWaylandSeat)
     ecm_mark_as_test(testWaylandSeat)
 endif()
@@ -97,7 +105,9 @@ set( test_wayland_outputmanagement_SRCS
         test_wayland_outputmanagement.cpp
     )
 add_executable(testWaylandOutputManagement ${test_wayland_outputmanagement_SRCS})
-target_link_libraries( testWaylandOutputManagement Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testWaylandOutputManagement PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+
+target_link_libraries( testWaylandOutputManagement Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testWaylandOutputManagement testWaylandOutputManagement)
 ecm_mark_as_test(testWaylandOutputManagement)
 
@@ -108,7 +118,8 @@ set( test_wayland_outputdevice_SRCS
         test_wayland_outputdevice.cpp
     )
 add_executable(testWaylandOutputDevice ${test_wayland_outputdevice_SRCS})
-target_link_libraries( testWaylandOutputDevice Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testWaylandOutputDevice PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testWaylandOutputDevice Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testWaylandOutputDevice testWaylandOutputDevice)
 ecm_mark_as_test(testWaylandOutputDevice)
 
@@ -142,7 +153,8 @@ set( testSubSurface_SRCS
         test_wayland_subsurface.cpp
     )
 add_executable(testSubSurface ${testSubSurface_SRCS})
-target_link_libraries( testSubSurface Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testSubSurface PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testSubSurface Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testSubSurface testSubSurface)
 ecm_mark_as_test(testSubSurface)
 
@@ -175,7 +187,8 @@ set( testContrast_SRCS
         test_wayland_contrast.cpp
     )
 add_executable(testContrast ${testContrast_SRCS})
-target_link_libraries( testContrast Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testContrast PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testContrast Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testContrast testContrast)
 ecm_mark_as_test(testContrast)
 
@@ -186,7 +199,7 @@ set( testSlide_SRCS
         test_wayland_slide.cpp
     )
 add_executable(testSlide ${testSlide_SRCS})
-target_link_libraries( testSlide Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_link_libraries( testSlide Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testSlide testSlide)
 ecm_mark_as_test(testSlide)
 
@@ -197,7 +210,8 @@ set( testWindowmanagement_SRCS
         test_wayland_windowmanagement.cpp
     )
 add_executable(testWindowmanagement ${testWindowmanagement_SRCS})
-target_link_libraries( testWindowmanagement Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testWindowmanagement PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testWindowmanagement Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testWindowmanagement testWindowmanagement)
 ecm_mark_as_test(testWindowmanagement)
 
@@ -208,7 +222,8 @@ set( testDataSource_SRCS
         test_datasource.cpp
     )
 add_executable(testDataSource ${testDataSource_SRCS})
-target_link_libraries( testDataSource Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testDataSource PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testDataSource Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testDataSource testDataSource)
 ecm_mark_as_test(testDataSource)
 
@@ -219,7 +234,8 @@ set( testDataDevice_SRCS
         test_datadevice.cpp
     )
 add_executable(testDataDevice ${testDataDevice_SRCS})
-target_link_libraries( testDataDevice Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testDataDevice PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testDataDevice Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testDataDevice testDataDevice)
 ecm_mark_as_test(testDataDevice)
 
@@ -230,7 +246,7 @@ set( testServerSideDecoration_SRCS
         test_server_side_decoration.cpp
     )
 add_executable(testServerSideDecoration ${testServerSideDecoration_SRCS})
-target_link_libraries( testServerSideDecoration Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_link_libraries( testServerSideDecoration Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testServerSideDecoration testServerSideDecoration)
 ecm_mark_as_test(testServerSideDecoration)
 
@@ -241,7 +257,7 @@ set( testDragAndDrop_SRCS
         test_drag_drop.cpp
     )
 add_executable(testDragAndDrop ${testDragAndDrop_SRCS})
-target_link_libraries( testDragAndDrop Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_link_libraries( testDragAndDrop Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testDragAndDrop testDragAndDrop)
 ecm_mark_as_test(testDragAndDrop)
 
@@ -252,7 +268,7 @@ set( testPlasmaShell_SRCS
         test_plasmashell.cpp
     )
 add_executable(testPlasmaShell ${testPlasmaShell_SRCS})
-target_link_libraries( testPlasmaShell Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_link_libraries( testPlasmaShell Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testPlasmaShell testPlasmaShell)
 ecm_mark_as_test(testPlasmaShell)
 
@@ -322,7 +338,8 @@ set( testError_SRCS
         test_error.cpp
     )
 add_executable(testError ${testError_SRCS})
-target_link_libraries( testError Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_include_directories(testError PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+target_link_libraries( testError Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testError testError)
 ecm_mark_as_test(testError)
 
@@ -333,7 +350,7 @@ set( testSelection_SRCS
         test_selection.cpp
     )
 add_executable(testSelection ${testSelection_SRCS})
-target_link_libraries( testSelection Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer Wayland::Client)
+target_link_libraries( testSelection Qt5::Test Qt5::Gui KF5::WaylandClient KF5::WaylandServer ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testSelection testSelection)
 ecm_mark_as_test(testSelection)
 
@@ -344,7 +361,7 @@ set( testXdgShellV5_SRCS
       test_xdg_shell.cpp
       )
 add_executable(testXdgShellV5 ${testXdgShellV5_SRCS})
-target_link_libraries( testXdgShellV5 Qt5::Test Qt5::Gui KF5::WaylandServer KF5::WaylandClient Wayland::Client)
+target_link_libraries( testXdgShellV5 Qt5::Test Qt5::Gui KF5::WaylandServer KF5::WaylandClient ${WAYLAND_CLIENT_LIBRARIES})
 add_test(kwayland-testXdgShellV5 testXdgShellV5)
 ecm_mark_as_test(testXdgShellV5)
 

@@ -131,12 +131,14 @@ generate_export_header(KF5WaylandServer
 
 add_library(KF5::WaylandServer ALIAS KF5WaylandServer)
 
+target_include_directories(KF5WaylandServer PRIVATE ${WAYLAND_SERVER_INCLUDE_DIR})
+
 target_include_directories(KF5WaylandServer INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/KWayland/Server>")
 
 target_link_libraries(KF5WaylandServer
     PUBLIC Qt5::Gui
     PRIVATE
-        Wayland::Server
+        ${WAYLAND_SERVER_LIBRARIES}
         EGL::EGL
 )
 

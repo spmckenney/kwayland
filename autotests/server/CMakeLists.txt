@@ -6,7 +6,8 @@ set( testWaylandServerDisplay_SRCS
         test_display.cpp
     )
 add_executable(testWaylandServerDisplay ${testWaylandServerDisplay_SRCS})
-target_link_libraries( testWaylandServerDisplay Qt5::Test Qt5::Gui KF5::WaylandServer Wayland::Server)
+target_include_directories(testWaylandServerDisplay PRIVATE ${WAYLAND_SERVER_INCLUDE_DIR})
+target_link_libraries( testWaylandServerDisplay Qt5::Test Qt5::Gui KF5::WaylandServer ${WAYLAND_SERVER_LIBRARIES})
 add_test(kwayland-testWaylandServerDisplay testWaylandServerDisplay)
 ecm_mark_as_test(testWaylandServerDisplay)
 
@@ -17,7 +18,7 @@ set( testWaylandServerSeat_SRCS
         test_seat.cpp
     )
 add_executable(testWaylandServerSeat ${testWaylandServerSeat_SRCS})
-target_link_libraries( testWaylandServerSeat Qt5::Test Qt5::Gui KF5::WaylandServer Wayland::Server)
+target_link_libraries( testWaylandServerSeat Qt5::Test Qt5::Gui KF5::WaylandServer ${WAYLAND_SERVER_LIBRARIES})
 add_test(kwayland-testWaylandServerSeat testWaylandServerSeat)
 ecm_mark_as_test(testWaylandServerSeat)
 

@@ -133,11 +133,13 @@ generate_export_header(KF5WaylandClient
 )
 add_library(KF5::WaylandClient ALIAS KF5WaylandClient)
 
+target_include_directories(KF5WaylandClient PRIVATE ${WAYLAND_CLIENT_INCLUDE_DIR})
+
 target_include_directories(KF5WaylandClient INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/KWayland/Client>")
 
 target_link_libraries(KF5WaylandClient
     PUBLIC Qt5::Gui
-    PRIVATE Wayland::Client
+    PRIVATE ${WAYLAND_CLIENT_LIBRARIES}
 )
 
 if(IS_ABSOLUTE "${KF5_INCLUDE_INSTALL_DIR}")
